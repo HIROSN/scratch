@@ -1,2 +1,2 @@
 # scratch
-original text
+this is going to cause a merge conflict
