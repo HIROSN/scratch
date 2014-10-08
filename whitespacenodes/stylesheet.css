@@ -1,0 +1,48 @@
+h1 {
+  font-family: Helvetica, Arial;
+}
+
+h2 {
+  font-family: Helvetica, Arial;
+}
+
+p {
+  font-family: Helvetica, Arial;
+}
+
+li {
+  display: block;
+  margin-left: -40px;
+  margin-bottom: 1px;
+  padding-top: 5px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  width: 200px;
+  height: 100%;
+  font-family: Helvetica, Arial;
+  font-size: 14pt;
+  background: orange;
+}
+
+.hot {
+  background: #cc0000;
+}
+
+.text {
+  height: 50px;
+  width: 50px;
+  margin-right: 5px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #008800;
+}
+
+.item {
+  height: 50px;
+  width: 100px;
+  margin-right: 5px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: lightgray;
+}
