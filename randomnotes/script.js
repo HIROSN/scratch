@@ -48,6 +48,14 @@ $(document).ready(function() {
 
       update();
 
+      element.click(function() {
+        counter.increment();
+      });
+
+      element.dblclick(function() {
+        counter.reset();
+      });
+
       return {
         increment: function() {
           ++count;
@@ -64,14 +72,6 @@ $(document).ready(function() {
         }
       };
     }(5, counterButton);
-
-    counterButton.click(function() {
-      counter.increment();
-    });
-
-    counterButton.dblclick(function() {
-      counter.reset();
-    });
 
     /*
     setInterval callback function has access to idTimer for free. Lifetime of
