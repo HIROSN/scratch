@@ -17,6 +17,7 @@ $(document).ready(function() {
     var counterButton;
     var counter;
     var catCounter;
+    var fade;
 
     var catUrl = 'http://images2.fanpop.com/images/photos/8400000/' +
       'cute-cats-cats-8477446-600-600.jpg';
@@ -24,8 +25,7 @@ $(document).ready(function() {
     startButton = $('#start');
     counterButton = $('#counter');
 
-    /* This is like,
-
+    /*
     class Counter {
     public:
       Counter(int c, Element e);
@@ -98,17 +98,7 @@ $(document).ready(function() {
       }
     };
 
-    startButton.click(function() {
-      if (!$(this).hasClass('disabled')) {
-        $('#cats > img').remove();
-        catCounter(counter.getValue(), 2000, $(this));
-      }
-    });
-  }());
-
-  // Fade
-  (function() {
-    var fade = function(element) {
+    fade = function(element) {
       var level = 1;
       var step = function() {
         var hex = level.toString(16);
@@ -126,13 +116,12 @@ $(document).ready(function() {
       setTimeout(step, 100);
     };
 
-    $('#fade').click(function() {
-      fade($(this));
-    });
-
-    $('#fadein').click(function() {
-      $(this).hide();
-      $(this).fadeIn(1500);
+    startButton.click(function() {
+      if (!$(this).hasClass('disabled')) {
+        $('#cats > img').remove();
+        catCounter(counter.getValue(), 2000, $(this));
+        fade($(this));
+      }
     });
   }());
 });
