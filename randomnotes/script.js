@@ -1,5 +1,16 @@
 $(document).ready(function() {
 
+  // All buttons
+  $('.button').mouseenter(function() {
+    if (!$(this).hasClass('disabled')) {
+      $(this).addClass('active');
+    }
+  });
+
+  $('.button').mouseleave(function() {
+    $(this).removeClass('active');
+  });
+
   // Cat Counter
   (function() {
     var startButton;
@@ -54,16 +65,6 @@ $(document).ready(function() {
       };
     }(5, counterButton);
 
-    $('.button').mouseenter(function() {
-      if (!$(this).hasClass('disabled')) {
-        $(this).addClass('active');
-      }
-    });
-
-    $('.button').mouseleave(function() {
-      $(this).removeClass('active');
-    });
-
     counterButton.click(function() {
       counter.increment();
     });
@@ -105,4 +106,33 @@ $(document).ready(function() {
     });
   }());
 
+  // Fade
+  (function() {
+    var fade = function(element) {
+      var level = 1;
+      var step = function() {
+        var hex = level.toString(16);
+        element.css('background-color', '#' + hex + hex + 'FFFF');
+
+        if (level < 15) {
+          level += 1;
+          setTimeout(step, 100);
+        }
+        else {
+          element.removeAttr('style');
+        }
+      };
+
+      setTimeout(step, 100);
+    };
+
+    $('#fade').click(function() {
+      fade($(this));
+    });
+
+    $('#fadein').click(function() {
+      $(this).hide();
+      $(this).fadeIn(1500);
+    });
+  }());
 });
