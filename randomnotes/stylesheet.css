@@ -9,8 +9,30 @@ em {
 .cat {
   display: inline-block;
   margin-left: 5px;
+  margin-top: 20px;
   border-radius: 100%;
   height: 100px;
   width: 100px;
   border: solid 1px lightgray;
+}
+
+.button {
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: 20px;
+  border-radius: 5px;
+  height: 2em;
+  width: 100px;
+  border: solid 1px darkgray;
+  text-align: center;
+  padding-top: 1em;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #BCD2EE;
+}
+
+.disabled {
+  color: lightgray;
 }
