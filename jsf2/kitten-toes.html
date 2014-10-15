@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <ul id="cat-images"><li><img src="http://media-cache-ec0.pinimg.com/236x/e3/d4/28/e3d4287e18b7405ed3c0c6357457e9d3.jpg"></li><li><img src="http://lovemeow.com/wp-content/uploads/2011/06/kitten102.jpg"></li><li><img src="http://adesignstory.com/wp-content/uploads/2010/05/Kitten1.jpg"></li></ul>
+  </body>
+  <script>
+    var titleTags = document.getElementsByTagName('title');
+    var title = titleTags[0];
+    title.text = 'kitten toes';
+
+    var kittenToesUl = document.getElementById('cat-images');
+    kittenToesUl.setAttribute('style', 'list-style-type: none; padding-left: 0');
+
+    var newLi = document.createElement('li');
+    var newImg = document.createElement('img');
+    newImg.setAttribute('src', 'http://www.catpichub.com/wp-content/uploads/2014/08/cute-cat-wallpaper-14001050-53f173c8980de-500x500.png');
+    newLi.appendChild(newImg);
+    kittenToesUl.appendChild(newLi);
+
+    var imgTags = document.querySelectorAll('li img');
+    for(var i = 0; i < imgTags.length; i++) {
+      imgTags[i].setAttribute(
+        'style',
+        'height: 220px; width: 250px; border-radius: 20px;'
+        );
+    }
+
+    var liTags = document.querySelectorAll('li');
+    for(var i = 0; i < liTags.length; i++) {
+      liTags[i].setAttribute(
+        'style',
+        'display: inline-block;'
+        );
+    }
+
+    window.addEventListener('load', function() {
+      //alert('You are about to see some cuties.')
+    });
+
+    window.addEventListener('resize', function() {
+      var margin = parseInt(getComputedStyle(document.body, null).marginLeft) +
+        parseInt(getComputedStyle(document.body, null).marginRight);
+
+      var imgTags = document.querySelectorAll('li img');
+      var width = (window.innerWidth - margin - 1) / 4;
+      var height = width * 220 / 250;
+
+      var styleValue = 'height: ' + height + 'px; width: ' + width + 'px;' +
+         'border-radius: 20px;';
+
+      for(var i = 0; i < imgTags.length; i++) {
+        imgTags[i].setAttribute('style', styleValue);
+      }
+    });
+
+    kittenToesUl.addEventListener('click', function(event) {
+      if (event.target.tagName === 'IMG') {
+        var theLi = event.target.parentNode;
+        var theUl = theLi.parentNode;
+        theLi.remove();
+        theUl.appendChild(theLi);
+      }
+    });
+</script>
+</html>
