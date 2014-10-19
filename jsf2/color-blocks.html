@@ -1,0 +1,43 @@
+<html>
+<head>
+  <style>
+    section {
+      width: 30%;
+      height: 250px;
+      min-width: 250px;
+      display: inline-block;
+    }
+    #blue {
+      background-color: blue;
+    }
+    #red {
+      background-color: red;
+    }
+    #green {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <section id="blue"></section><section id="red"></section><section id="green"></section>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+    <!-- Use jQuery! -->
+    $(window).on('resize', function(event) {
+      var $sections = $('section');
+      var display = $sections.css('display');
+
+      if ($(document.body).width() < $sections.width() * $sections.length) {
+        if (display !== 'block') {
+          $sections.css('display', 'block');
+        }
+      }
+      else {
+        if (display !== 'inline-block') {
+          $sections.css('display', 'inline-block');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
