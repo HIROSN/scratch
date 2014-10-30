@@ -1,8 +1,9 @@
 {
-  "name" : "hello-express",
-  "description" : "a hello world web application written in express",
-  "version" : "0.0.1",
-  "dependencies" : {
-    "express" : "^4.0"
+  "name": "hello-express",
+  "description": "a hello world web application written in express",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "express": "^4.0"
   }
 }

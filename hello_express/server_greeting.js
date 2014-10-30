@@ -2,6 +2,7 @@
 
 var express = require('express');
 var http    = require('http');
+var bodyparser = require('body-parser');
 var app = express();
 
 app.get('/greeting', function(req, res) {
@@ -10,6 +11,17 @@ app.get('/greeting', function(req, res) {
   };
 
   res.json(data);
+});
+
+app.use(bodyparser.json());
+
+app.post('/echo', function(req, res) {
+  res.send(req.body.message + ' was what you said.');
+});
+
+app.post('/shout/:name', function(req, res) {
+  res.status(201);
+  res.send(req.params.name.toUpperCase() + ': ' + req.body.message);
 });
 
 var server = http.createServer(app);
