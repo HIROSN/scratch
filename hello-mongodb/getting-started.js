@@ -22,6 +22,7 @@ var foundOrSavedKitty = function() {
     Kitten.find(function(err, kittens) {
       if (!err) {
         console.log(kittens.length + ' kittens found.');
+        db.close();
         mongoose.disconnect();
       }
     });
