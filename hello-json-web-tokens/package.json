@@ -1,5 +1,5 @@
 {
-  "name": "using-json-web-tokens",
+  "name": "hello-json-web-tokens",
   "version": "1.0.0",
   "description": "Server-side Auth.",
   "main": "index.js",
@@ -7,15 +7,10 @@
     "test": "node_modules/grunt-cli/bin/grunt"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/HIROSN/using-json-web-tokens.git"
+    "type": "git"
   },
   "author": "hirosn@live.com",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/HIROSN/using-json-web-tokens/issues"
-  },
-  "homepage": "https://github.com/HIROSN/using-json-web-tokens",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.9.2",
