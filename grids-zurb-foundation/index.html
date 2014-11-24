@@ -1,0 +1,142 @@
+<!-- http://blog.teamtreehouse.com/beginners-guide-grids-zurb-foundation-5 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Foundation Template Simplified</title>
+
+    <link rel="stylesheet"
+      href="http://foundation.zurb.com/assets/css/templates/foundation.css"/>
+
+    <link rel="stylesheet" href="stylesheet.css"/>
+  </head>
+  <body>
+    <!-- Header and Nav -->
+
+    <div class="row">
+      <div class="large-3 columns">
+        Logo
+      </div>
+      <div class="large-9 columns">
+        navigation
+      </div>
+    </div>
+
+    <!-- First Band (Image) -->
+
+    <div class="row">
+      <div class="large-12 columns">
+        large center image
+      </div>
+    </div>
+
+    <!-- Second Band (Image Left with Text) -->
+
+    <div class="row">
+      <div class="large-4 columns">
+        left image
+      </div>
+      <div class="large-8 columns">
+        text content
+      </div>
+    </div>
+
+    <!-- Third Band (Image Right with Text) -->
+
+    <div class="row">
+      <div class="large-8 columns">
+        text content
+      </div>
+      <div class="large-4 columns">
+        right image
+      </div>
+    </div>
+
+    <!-- Equal amounts of space at small and medium sizes -->
+
+    <div class="row">
+      <div class="small-6 large-8 columns">
+        text content
+      </div>
+      <div class="small-6 large-4 columns">
+        right image
+      </div>
+    </div>
+
+    <!-- NESTED GRIDS -->
+
+    <div class="row">
+      <div class="large-8 columns">
+        <!-- nested grid -->
+        <div class="row">
+          <div class="small-4 columns">
+            nested text content
+          </div>
+          <div class="small-8 columns">
+            nested right image
+          </div>
+        </div>
+      </div>
+      <div class="large-4 columns">
+        right image
+      </div>
+    </div>
+
+    <!-- CENTERING COLUMNS -->
+
+    <div class="row">
+      <div class="large-8 large-centered columns">
+        centered content
+      </div>
+    </div>
+
+    <!-- OFFSETS -->
+
+    <div class="row">
+      <div class="large-8 large-offset-3 columns">
+        centered offset content
+      </div>
+    </div>
+
+    <!-- INCOMPLETE ROWS -->
+
+    <div class="row">
+      <div class="large-2 columns">
+        left column
+      </div>
+      <div class="large-3 columns">
+        middle column
+      </div>
+      <div class="large-2 end columns">
+        last column
+      </div>
+    </div>
+
+    <!-- SOURCE ORDERING -->
+
+    <div class="row">
+      <div class="large-9 large-push-3 columns" contenteditable>
+        main content editable
+      </div>
+      <div class="large-3 large-pull-9 columns" contenteditable>
+        left sidebar editable
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="row">
+      <div class="large-12 columns">
+        <div class="row">
+          <div class="large-6 columns">
+            copyright
+          </div>
+          <div class="large-6 columns">
+            footer links
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
