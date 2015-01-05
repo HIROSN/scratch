@@ -39,6 +39,10 @@ body {
   width: 100%;
 }
 
+td {
+  padding: 0px;
+}
+
 input {
   font-family: Helvetica, Arial;
   font-size: 16pt;
