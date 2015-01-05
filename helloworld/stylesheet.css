@@ -1,6 +1,54 @@
-div {
-  height: 100px;
-  width: 100px;
-  display: inline-block;
-  background-color: #008800;
+body {
+  padding-top: 86px;
+}
+
+#theme {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#header-image {
+  width: 100%;
+  height: 100%;
+  clip: rect(0,auto,6.5em,0);
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#header-image img {
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+#UH {
+  box-shadow: 0 0 9px 0 #490f76;
+  border-bottom: 1px solid #490f76;
+  position: fixed;
+  height: 6.5em;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.myColumn {
+  width: 33.33%;
+}
+
+.myContent {
+  position: relative;
+}
+
+.App_v2 {
+  margin-top: 20px;
+  background: #bfa79b;
+  padding: 100px;
 }

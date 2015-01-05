@@ -1,13 +1,16 @@
-$(document).ready(function() {
-  $('div').mouseenter(function() {
-    $(this).animate({height: '+=10px'});
-  });
+$(function() {
+  for (var i = 0; i < 10; i++) {
+    $('.myContent').append($('<div class="App_v2"></div>'));
+  }
 
-  $('div').mouseleave(function() {
-    $(this).animate({height: '-=10px'});
-  });
-
-  $('div').click(function() {
+  $('.App_v2')
+  .mouseenter(function() {
+    $(this).animate({width: '+=10px'});
+  })
+  .mouseleave(function() {
+    $(this).animate({width: '-=10px'});
+  })
+  .click(function() {
     $(this).toggle(1000);
   });
 });
