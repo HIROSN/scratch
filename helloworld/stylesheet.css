@@ -39,6 +39,23 @@ body {
   width: 100%;
 }
 
+input {
+  font-family: Helvetica, Arial;
+  font-size: 16pt;
+  margin-left: 8px;
+  margin-top: 20px;
+}
+
+label {
+  font-family: Helvetica, Arial;
+  font-size: 16pt;
+  color: lightgray;
+}
+
+.hidden {
+  display: none;
+}
+
 .myColumn {
   width: 33.33%;
 }
