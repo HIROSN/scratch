@@ -82,5 +82,6 @@ label {
   font-family: Helvetica, Arial;
   font-size: 16pt;
   color: lightgray;
+  -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
 }
