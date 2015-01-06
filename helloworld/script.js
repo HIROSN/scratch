@@ -1,8 +1,13 @@
 $(function() {
-  var $myContent = $('.myContent');
+  var $myPageWrapper = $('#myPageWrapper');
   var $myColumns = $('#myColumns');
+  var $myContent = $('.myContent');
+
   var $showColumn = $('#showColumn');
   var $numContents = $('#numContents');
+
+  var $showAnimation = $('#showAnimation');
+  var $numAnimations = $('#numAnimations');
 
   var showHideColumn = function() {
     if ($showColumn.is(':checked')) {
@@ -21,6 +26,16 @@ $(function() {
     }
   }
 
+  var showAnimation = function() {
+    for (var i = 0; i < +$numAnimations.val(); i++) {
+      $myPageWrapper.append($('<div class="animated tada">tada</div>'));
+    }
+  }
+
+  var removeAnimation = function() {
+    $('#myPageWrapper .animated').remove();
+  }
+
   $showColumn.on('click', function() {
     showHideColumn();
   });
@@ -33,6 +48,26 @@ $(function() {
 
   $numContents.on('blur', function() {
     showContents();
+  });
+
+  $showAnimation.on('click', function() {
+    if ($showAnimation.is(':checked')) {
+      showAnimation();
+    }
+    else {
+      removeAnimation();
+    }
+  });
+
+  $numAnimations.on('keyup', function(event) {
+    if (13 === event.which) {
+      $(this).blur();
+    }
+  });
+
+  $numAnimations.on('blur', function() {
+    removeAnimation();
+    showAnimation();
   });
 
   $myContent.on('mouseenter', '.App_v2', function() {

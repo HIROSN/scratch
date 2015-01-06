@@ -73,3 +73,14 @@ label {
   background: #bfa79b;
   padding: 100px;
 }
+
+.animated {
+  margin-top: 20px;
+  margin-right: 20px;
+  display: inline-block;
+  position: relative;
+  font-family: Helvetica, Arial;
+  font-size: 16pt;
+  color: lightgray;
+  animation-iteration-count: infinite;
+}
