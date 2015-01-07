@@ -41,6 +41,7 @@ body {
 
 td {
   padding: 0px;
+  vertical-align: top;
 }
 
 input {

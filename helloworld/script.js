@@ -9,6 +9,9 @@ $(function() {
   var $showAnimation = $('#showAnimation');
   var $numAnimations = $('#numAnimations');
 
+  var $fixed = $('#fixed');
+  var $headerImage = $('#header-image img');
+
   var showHideColumn = function() {
     if ($showColumn.is(':checked')) {
       $myColumns.removeClass('hidden');
@@ -68,6 +71,15 @@ $(function() {
   $numAnimations.on('blur', function() {
     removeAnimation();
     showAnimation();
+  });
+
+  $fixed.on('click', function() {
+    if ($fixed.is(':checked')) {
+      $headerImage.css('background-attachment', 'fixed');
+    }
+    else {
+      $headerImage.css('background-attachment', 'scroll');
+    }
   });
 
   $myContent.on('mouseenter', '.App_v2', function() {
