@@ -19,7 +19,7 @@ $(function() {
     else {
       $myColumns.addClass('hidden');
     }
-  }
+  };
 
   var showContents = function() {
     $('.myContent div').remove();
@@ -27,17 +27,17 @@ $(function() {
     for (var i = 0; i < +$numContents.val(); i++) {
       $myContent.append($('<div class="App_v2"></div>'));
     }
-  }
+  };
 
   var showAnimation = function() {
     for (var i = 0; i < +$numAnimations.val(); i++) {
       $myPageWrapper.append($('<div class="animated tada">tada</div>'));
     }
-  }
+  };
 
   var removeAnimation = function() {
     $('#myPageWrapper .animated').remove();
-  }
+  };
 
   $showColumn.on('click', function() {
     showHideColumn();
