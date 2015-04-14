@@ -10,21 +10,21 @@
 .roller, .face {
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
+	-webkit-transform-origin: 50% 50% -200px;
+	transform-origin: 50% 50% -200px;
 }
 .face1 {
 	background: red; /* front */
-	-webkit-transform: translateZ(200px);
-	transform: translateZ(200px);
 }
 .face2 {
 	background: blue; /* top */
-	-webkit-transform: rotateX(90deg) translateZ(200px);
-	transform: rotateX(90deg) translateZ(200px);
+	-webkit-transform: rotateX(90deg);
+	transform: rotateX(90deg);
 }
 .face3 {
 	background: green; /* bottom */
-	-webkit-transform: rotateX(-90deg) translateZ(200px);
-	transform: rotateX(-90deg) translateZ(200px);
+	-webkit-transform: rotateX(-90deg);
+	transform: rotateX(-90deg);
 }
 .view {
 	background-color: yellow;
