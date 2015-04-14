@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="main3.css">
+</head>
+<body>
+  <article class="demo-wrap">
+    <div class="demo-content">
+      <div class="container">
+        <div class="world">
+          <div class="roller">
+            <div class="face face1"></div>
+            <div class="face face2"></div>
+            <div class="face face3"></div>
+          </div>
+        </div>
+        <div class="view"></div>
+      </div>
+    </div>
+  </article>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+  (function() {
+    $(window).on('keydown', function(event) {
+      $('.roller').addClass('animated');
+      switch (event.which) {
+        case 40:
+          $('.roller').removeClass('up down');
+          $('.roller').addClass('up');
+          break;
+        case 38:
+          $('.roller').removeClass('up down');
+          $('.roller').addClass('down');
+          break;
+        case 27:
+          $('.roller').removeClass('animated up down');
+          break;
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
