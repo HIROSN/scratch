@@ -1,0 +1,57 @@
+.world, .roller, .face {
+	position: absolute;
+	width: 375px;
+	height: 375px;
+}
+.world {
+	margin: 12.5px;
+	-webkit-perspective: 3000px;
+	perspective: 3000px;
+}
+.roller, .face {
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.face1 {
+	background: red; /* front */
+	-webkit-transform: translateZ(187.5px);
+	transform: translateZ(187.5px);
+}
+.face2 {
+	background: blue; /* top */
+	-webkit-transform: rotateX(90deg) translateZ(187.5px);
+	transform: rotateX(90deg) translateZ(187.5px);
+}
+.face3 {
+	background: green; /* bottom */
+	-webkit-transform: rotateX(-90deg) translateZ(187.5px);
+	transform: rotateX(-90deg) translateZ(187.5px);
+}
+.view {
+	position: absolute;
+	width: 400px;
+	height: 400px;
+	background-color: yellow;
+	opacity: 0.5;
+}
+.animated {
+	-webkit-transition: 1s;
+	transition: 1s;
+}
+.up {
+	-webkit-transform: rotateX(90deg);
+	transform: rotateX(90deg);
+}
+.down {
+	-webkit-transform: rotateX(-90deg);
+	transform: rotateX(-90deg);
+}
+.demo-wrap {
+  margin: 4.8rem auto 6.4em;
+}
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	width: 92.5%;
+	max-width: 160rem;
+}
