@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="main3.css">
+  <link rel="stylesheet" href="main1.css">
 </head>
 <body>
   <article class="demo-wrap">
@@ -16,12 +16,43 @@
             <div class="face face3"></div>
           </div>
         </div>
+        <div class="view"></div>
       </div>
     </div>
   </article>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script>
   (function() {
+    var $world = $('.world');
+    var perspective = parseInt($world.css('-webkit-perspective') || $world.css('perspective'));
+    var height = $world.height();
+    var halfHeight = height / 2;
+    halfHeight = (perspective * halfHeight) / (perspective + halfHeight);
+
+    $world.css({
+      margin: (height / 2 - halfHeight) + 'px'
+    });
+
+    $('.world, .roller, .face').css({
+      width: halfHeight * 2,
+      height: halfHeight * 2
+    });
+
+    $('.face1').css({
+      '-webkit-transform': 'translateZ(' + halfHeight + 'px)',
+      transform: 'translateZ(' + halfHeight + 'px)'
+    });
+
+    $('.face2').css({
+      '-webkit-transform': 'rotateX(90deg) translateZ(' + halfHeight + 'px)',
+      transform: 'rotateX(90deg) translateZ(' + halfHeight + 'px)'
+    });
+
+    $('.face3').css({
+      '-webkit-transform': 'rotateX(-90deg) translateZ(' + halfHeight + 'px)',
+      transform: 'rotateX(-90deg) translateZ(' + halfHeight + 'px)'
+    });
+
     $(window).on('keydown', function(event) {
       $('.roller').addClass('animated');
       switch (event.which) {
