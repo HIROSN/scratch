@@ -40,3 +40,33 @@ The ASP.NET Team
 * [Publish to the file system](http://go.microsoft.com/fwlink/?LinkId=518019)
 
 We would love to hear your [feedback](http://go.microsoft.com/fwlink/?LinkId=518015)
+
+---
+#### Install DNVM and DNX
+[Getting Started with ASP.NET 5 and DNX](https://github.com/HIROSN/Home)
+
+#### Install CLR runtime
+```sh
+C:>dnvm install latest -a x64 -p
+```
+To list available runtimes:
+```sh
+C:>dnvm list
+```
+#### Install Yeoman generator for ASP.NET 5 apps
+```sh
+C:>npm install yo -g
+C:>npm install generator-aspnet -g
+```
+#### Create Web Application Basic [without Membership and Authorization]
+```sh
+C:>yo aspnet
+```
+#### Install NuGet packages
+```sh
+C:>dnu restore
+```
+#### Run Web Application locally
+```sh
+C:>start http://localhost:5000&&dnx web
+```
