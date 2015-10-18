@@ -68,5 +68,5 @@ C:>dnu restore
 ```
 #### Run Web Application locally
 ```sh
-C:>start http://localhost:5000&&dnx web
+C:>start http://localhost:5000 && dnx web
 ```
