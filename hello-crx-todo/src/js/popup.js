@@ -1,8 +1,11 @@
 (function() {
+  'use strict';
+
   angular.module('todoApp', ['ngResource'])
     .controller('todoCtrl', todoController);
 
   function todoController($http) {
+    /*jshint validthis:true */
     var vm = this;
     var api = 'http://localhost:5000/cors/todos/';
 

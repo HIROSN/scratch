@@ -1,6 +1,8 @@
 'use strict';
 var gulp = require('gulp');
 
+var jshint = require('gulp-jshint');
+var jscs = require('gulp-jscs');
 var rimraf = require('gulp-rimraf');
 var ngAnnotate = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
@@ -8,6 +10,7 @@ var uglify = require('gulp-uglify');
 var paths = {
   src: 'src/',
   dist: 'dist/',
+
   scripts: 'js/**/*.js',
   styles: 'css/**/*.css',
   html: 'html/**/*.html',
@@ -22,6 +25,17 @@ var paths = {
     'manifest.json'
   ]
 };
+
+// Lint scripts
+gulp.task('lint', function() {
+  return gulp.src(paths.scripts, {cwd: paths.src})
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(jscs())
+    .pipe(jscs.reporter())
+    .pipe(jshint.reporter('fail'))
+    .pipe(jscs.reporter('fail'));
+});
 
 // Delete the dist directory
 gulp.task('clean', function() {
@@ -54,6 +68,7 @@ gulp.task('uglify', ['clean'], function() {
 
 // Define the default task as a sequence of the above tasks
 gulp.task('default', [
+  'lint',
   'clean',
   'copy',
   'uglify'
