@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Todo</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <div data-ng-app="todoApp" data-ng-controller="todoCtrl as vm">
+    <div>
+      <a data-ng-href="http://{{vm.todo.title}}"
+        data-ng-click="vm.navigate(vm.todo.title);">
+        <span data-ng-bind="vm.todo.title"></span>
+      </a>
+    </div>
+    <div>
+      <button data-ng-click="vm.result();">Good</button>
+      <button data-ng-click="vm.result();">Bad</button>
+    </div>
+  </div>
+  <script src="angular.min.js"></script>
+  <script src="angular-resource.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
