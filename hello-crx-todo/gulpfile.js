@@ -2,6 +2,8 @@
 var gulp = require('gulp');
 
 var rimraf = require('gulp-rimraf');
+var ngAnnotate = require('gulp-ng-annotate');
+var uglify = require('gulp-uglify');
 
 var paths = {
   src: 'src/',
@@ -38,12 +40,21 @@ gulp.task('copy', ['clean'], function() {
   gulp.src(paths.extras)
     .pipe(gulp.dest(paths.dist));
 
-  gulp.src([paths.scripts, paths.styles, paths.html], {cwd: paths.src})
+  gulp.src([paths.styles, paths.html], {cwd: paths.src})
+    .pipe(gulp.dest(paths.dist));
+});
+
+// Minify scripts
+gulp.task('uglify', ['clean'], function() {
+  return gulp.src(paths.scripts, {cwd: paths.src})
+    .pipe(ngAnnotate())
+    .pipe(uglify())
     .pipe(gulp.dest(paths.dist));
 });
 
 // Define the default task as a sequence of the above tasks
 gulp.task('default', [
   'clean',
-  'copy'
+  'copy',
+  'uglify'
 ]);
