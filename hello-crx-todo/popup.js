@@ -5,10 +5,9 @@
   function todoController($http) {
     var vm = this;
     var api = 'http://localhost:5000/cors/todos/';
-    var user = {name: 'default', password: 'P@ssw0rd!'};
 
     var getNextUrl = function() {
-      $http.post(api, user)
+      $http.get(api)
       .then(function(res) {
         for (var i = 0; i < res.data.length; i++) {
           if (!res.data[i].completed && res.data[i].title != vm.todo.title) {
@@ -26,7 +25,7 @@
     vm.result = function() {
       var id = vm.todo.id;
       getNextUrl();
-      $http.put(api + id, user);
+      $http.put(api + id);
     };
 
     vm.todo = {title: '(No URL)'};
