@@ -9,4 +9,4 @@ Installing in Google Chrome:
 - chrome://extensions/
 - Check "Developer mode"
 - Click on "Load unpacked extension.."
-- Select [dist](dist)
+- Select the dist folder
