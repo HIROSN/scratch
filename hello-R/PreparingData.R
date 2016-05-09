@@ -7,7 +7,7 @@ rawData <- subset(rawData, DEST %in% airports & ORIGIN %in% airports)
 #head(rawData, 2)
 #tail(rawData, 2)
 
-# Dropping rows
+# Dropping columns
 rawData$X <- NULL
 #head(rawData, 2)
 #cor(rawData[c("ORIGIN_AIRPORT_SEQ_ID", "ORIGIN_AIRPORT_ID")])
@@ -19,16 +19,18 @@ rawData$X <- NULL
 #rawData$UNIQUE_CARRIER <- NULL
 #head(rawData, 2)
 
-# Cleaning data
-cleanedData <- rawData[!is.na(rawData$ARR_DEL15) & rawData$ARR_DEL15 != "",]
+# Cleaning data and dropping rows
+rawData$CANCELLED <- as.integer(rawData$CANCELLED)
+rawData$DIVERTED <- as.integer(rawData$DIVERTED)
+cleanedData <- rawData[!is.na(rawData$ARR_DEL15) & rawData$ARR_DEL15 != "" & rawData$CANCELLED == 0 & rawData$DIVERTED == 0,]
+#notarr <- cleanedData[cleanedData$CANCELLED != 0 | cleanedData$DIVERTED != 0,]
+#nrow(notarr)
 #nrow(rawData)
 #nrow(cleanedData)
 #head(cleanedData, 2)
 
 # Adjusting data types
 cleanedData$DISTANCE <- as.integer(cleanedData$DISTANCE)
-cleanedData$CANCELLED <- as.integer(cleanedData$CANCELLED)
-cleanedData$DIVERTED <- as.integer(cleanedData$DIVERTED)
 cleanedData$ARR_DEL15 <- as.factor(cleanedData$ARR_DEL15)
 #cleanedData$DEP_DEL15 <- as.factor(cleanedData$DEP_DEL15)
 #cleanedData$DEST_AIRPORT_ID <- as.factor(cleanedData$DEST_AIRPORT_ID)
