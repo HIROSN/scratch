@@ -3,9 +3,47 @@ rawData <- read.csv2("github/scratch/hello-R/38189197_T_ONTIME.csv", sep = ",", 
 nrow(rawData)
 airports <- c('ATL', 'LAX', 'ORD', 'DFW', 'JFK', 'SFO', 'CLT', 'LAS', 'PHX')
 rawData <- subset(rawData, DEST %in% airports & ORIGIN %in% airports)
+rawData$FL_DATE <- gsub("-", "", rawData$FL_DATE)
+#rawData$DEP_TIME_BLK <- substr(rawData$DEP_TIME_BLK, 1, 2)
+#rawData$ARR_TIME_BLK <- substr(rawData$ARR_TIME_BLK, 1, 2)
 #nrow(rawData)
 #head(rawData, 2)
 #tail(rawData, 2)
+
+# Loading station data
+stations <- read.csv2("github/scratch/hello-R/201501station.txt", sep = "|", header = TRUE, stringsAsFactors = FALSE)
+stations <- subset(stations, CallSign %in% airports)
+rawData <- merge(
+  x = rawData,
+  y = data.frame(ORIGIN = stations$CallSign, ORIGIN_WBAN = stations$WBAN),
+  by = "ORIGIN",
+  all.x = TRUE)
+rawData <- merge(
+  x = rawData,
+  y = data.frame(DEST = stations$CallSign, DEST_WBAN = stations$WBAN),
+  by = "DEST",
+  all.x = TRUE)
+
+# Loading weather data
+weather <- read.csv2("github/scratch/hello-R/201501daily.txt", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+rawData <- merge(
+  x = rawData,
+  y = data.frame(
+    FL_DATE = weather$YearMonthDay,
+    ORIGIN_WBAN = weather$WBAN,
+    ORIGIN_TAVG = weather$Tavg,
+    ORIGIN_PRECIP = weather$PrecipTotal),
+  by = c("FL_DATE", "ORIGIN_WBAN"),
+  all.x = TRUE)
+rawData <- merge(
+  x = rawData,
+  y = data.frame(
+    FL_DATE = weather$YearMonthDay,
+    DEST_WBAN = weather$WBAN,
+    DEST_TAVG = weather$Tavg,
+    DEST_PRECIP = weather$PrecipTotal),
+  by = c("FL_DATE", "DEST_WBAN"),
+  all.x = TRUE)
 
 # Dropping columns
 rawData$X <- NULL
@@ -42,9 +80,23 @@ cleanedData$ARR_TIME_BLK <- as.factor(cleanedData$ARR_TIME_BLK)
 cleanedData$DEP_TIME_BLK <- as.factor(cleanedData$DEP_TIME_BLK)
 cleanedData$CARRIER <- as.factor(cleanedData$CARRIER)
 #tapply(cleanedData$ARR_DEL15, cleanedData$ARR_DEL15, length)
+cleanedData$ORIGIN_TAVG <- as.integer(cleanedData$ORIGIN_TAVG)
+cleanedData$DEST_TAVG <- as.integer(cleanedData$DEST_TAVG)
+cleanedData$ORIGIN_PRECIP <- as.double(cleanedData$ORIGIN_PRECIP)
+cleanedData$DEST_PRECIP <- as.double(cleanedData$DEST_PRECIP)
 
 # Drop columns
-featureCols <- c("ARR_DEL15", "DAY_OF_WEEK", "CARRIER", "DEST", "ORIGIN", "DEP_TIME_BLK")
+featureCols <- c(
+  "ARR_DEL15",
+  "DAY_OF_WEEK",
+  "CARRIER",
+  "DEST",
+  "ORIGIN",
+  "DEP_TIME_BLK",
+  "ORIGIN_TAVG",
+  "DEST_TAVG",
+  "ORIGIN_PRECIP",
+  "DEST_PRECIP")
 cleanedDataFiltered <- cleanedData[, featureCols]
 
 # Split data for training and testing
