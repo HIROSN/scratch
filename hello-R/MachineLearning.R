@@ -1,6 +1,9 @@
 # Loading data
-rawData <- read.csv2("github/scratch/hello-R/38189197_T_ONTIME.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE)
-nrow(rawData)
+rawData <- read.csv2(
+  "github/scratch/hello-R/38189197_T_ONTIME.csv",
+  sep = ",",
+  header = TRUE,
+  stringsAsFactors = FALSE)
 airports <- c('ATL', 'LAX', 'ORD', 'DFW', 'JFK', 'SFO', 'CLT', 'LAS', 'PHX')
 rawData <- subset(rawData, DEST %in% airports & ORIGIN %in% airports)
 rawData$FL_DATE <- gsub("-", "", rawData$FL_DATE)
@@ -11,7 +14,11 @@ rawData$FL_DATE <- gsub("-", "", rawData$FL_DATE)
 #tail(rawData, 2)
 
 # Loading station data
-stations <- read.csv2("github/scratch/hello-R/201501station.txt", sep = "|", header = TRUE, stringsAsFactors = FALSE)
+stations <- read.csv2(
+  "github/scratch/hello-R/201501station.txt",
+  sep = "|",
+  header = TRUE,
+  stringsAsFactors = FALSE)
 stations <- subset(stations, CallSign %in% airports)
 rawData <- merge(
   x = rawData,
@@ -25,7 +32,11 @@ rawData <- merge(
   all.x = TRUE)
 
 # Loading weather data
-weather <- read.csv2("github/scratch/hello-R/201501daily.txt", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+weather <- read.csv2(
+  "github/scratch/hello-R/201501daily.txt",
+  sep = ",",
+  header = TRUE,
+  stringsAsFactors = FALSE)
 rawData <- merge(
   x = rawData,
   y = data.frame(
@@ -60,7 +71,11 @@ rawData$X <- NULL
 # Cleaning data and dropping rows
 rawData$CANCELLED <- as.integer(rawData$CANCELLED)
 rawData$DIVERTED <- as.integer(rawData$DIVERTED)
-cleanedData <- rawData[!is.na(rawData$ARR_DEL15) & rawData$ARR_DEL15 != "" & rawData$CANCELLED == 0 & rawData$DIVERTED == 0,]
+cleanedData <- rawData[
+  !is.na(rawData$ARR_DEL15) &
+  rawData$ARR_DEL15 != "" &
+  rawData$CANCELLED == 0 &
+  rawData$DIVERTED == 0,]
 #notarr <- cleanedData[cleanedData$CANCELLED != 0 | cleanedData$DIVERTED != 0,]
 #nrow(notarr)
 #nrow(rawData)
@@ -105,6 +120,27 @@ library(caret)
 inTrainRows <- createDataPartition(cleanedDataFiltered$ARR_DEL15, p = 0.70, list = FALSE)
 trainDataFiltered <- cleanedDataFiltered[inTrainRows,]
 testDataFiltered <- cleanedDataFiltered[ - inTrainRows,]
-nrow(cleanedDataFiltered)
-nrow(trainDataFiltered) * 100 / nrow(cleanedDataFiltered)
-nrow(testDataFiltered) * 100 / nrow(cleanedDataFiltered)
+#nrow(cleanedDataFiltered)
+#nrow(trainDataFiltered) * 100 / nrow(cleanedDataFiltered)
+#nrow(testDataFiltered) * 100 / nrow(cleanedDataFiltered)
+
+# Logistic Regression
+#set.seed(122515)
+#install.packages("e1071")
+#logisticRegModel <- train(ARR_DEL15 ~ ., data=trainDataFiltered, method="glm", family="binomial")
+#logRegPrediction <- predict(logisticRegModel, testDataFiltered)
+#logRegConfMat <- confusionMatrix(logRegPrediction, testDataFiltered[, "ARR_DEL15"])
+#logRegConfMat
+
+# Random Forest
+set.seed(122515)
+#install.packages("randomForest")
+library(randomForest)
+rfModel <- randomForest(
+  testDataFiltered[-1],
+  testDataFiltered$ARR_DEL15,
+  proximity = TRUE,
+  importance = TRUE)
+rfValidation <- predict(rfModel, testDataFiltered)
+rfConfMat <- confusionMatrix(rfValidation, testDataFiltered[, "ARR_DEL15"])
+rfConfMat
