@@ -12,7 +12,13 @@
 #   col="red",
 #   lwd = 1)
 # summary(model)
-#install.packages("ggplot2")
+# install.packages("ggplot2")
 library(ggplot2)
-p <- ggplot(iris, aes(Petal.Length, Petal.Width))
-p + geom_point() + geom_smooth(aes(Petal.Length, Petal.Width, group = 1), method = "lm") + ggtitle("Petal length vs. width")
+ggplot(
+  iris,
+  aes(Petal.Length, Petal.Width)) +
+geom_point() +
+geom_smooth(
+  aes(Petal.Length, Petal.Width, group = 1),
+  method = "lm") +
+ggtitle("Petal length vs. width")
