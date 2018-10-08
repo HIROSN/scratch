@@ -296,6 +296,6 @@ void NSLogDictionary(NSDictionary* dictionary) {
 // Editor > Structure > Re-Indent (^I)
 
 // Trim trailing whitespace
-// Xcode > Preferendes > Text Editing > Editing > While Editing:
+// Xcode > Preferences > Text Editing > Editing > While Editing:
 // [v] Automatically trim trailing whitespace
 //      [v] Including whitespace-only lines
