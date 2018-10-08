@@ -163,7 +163,7 @@ int main(/* int argc, const char * argv[] */) {
             // Path to a file in home directory
             NSString* pathToBashHistory = [NSHomeDirectory() stringByAppendingPathComponent:@".bash_history"];
 
-            NSLog(@"Bash history URL: %@", pathToBashHistory);
+            NSLog(@"Bash history: %@", pathToBashHistory);
 
             // Dictionary of file attributes
             NSDictionary* attributes = [fileManager attributesOfItemAtPath:pathToBashHistory
