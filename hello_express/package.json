@@ -3,9 +3,9 @@
   "description": "a hello world web application written in express",
   "version": "0.0.1",
   "dependencies": {
-    "body-parser": "^1.9.2",
-    "express": "^4.0",
-    "hbs": "^2.7.0",
-    "superagent": "^0.21.0"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "hbs": "^4.0.1",
+    "superagent": "^4.0.0-beta.5"
   }
 }
